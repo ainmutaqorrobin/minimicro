@@ -1,3 +1,5 @@
+import CommentCreate from "./CommentCreate";
+
 function PostCard({ post }) {
   return (
     <div
@@ -7,6 +9,7 @@ function PostCard({ post }) {
     >
       <div className="card-body">
         <h3>{post.title}</h3>
+        <CommentCreate postId={post.id} />
       </div>
     </div>
   );
