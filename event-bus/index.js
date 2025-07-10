@@ -9,6 +9,7 @@ const ENDPOINT = {
   POST_SERVICE: "http://localhost:4000/events",
   COMMENT_SERVICE: "http://localhost:4001/events",
   QUERY_SERVICE: "http://localhost:4002/events",
+  MODERATION_SERVICE: "http://localhost:4003/events",
 };
 
 app.post("/events", (req, res) => {
