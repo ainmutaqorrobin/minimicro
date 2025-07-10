@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { POST_ENDPOINT } from "./const";
+import { QUERY_ENDPOINT } from "./const";
 import PostCard from "./PostCard";
 
 function PostList() {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const response = await axios.get(`${POST_ENDPOINT}/posts`);
+    const response = await axios.get(`${QUERY_ENDPOINT}/posts`);
 
     setPosts(response.data);
   };
