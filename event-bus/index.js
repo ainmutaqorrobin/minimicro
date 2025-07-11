@@ -12,9 +12,11 @@ const ENDPOINT = {
   MODERATION_SERVICE: "http://localhost:4003/events",
 };
 
+const events = [];
+
 app.post("/events", (req, res) => {
   const event = req.body;
-
+  events.push(event);
   axios
     .post(ENDPOINT.POST_SERVICE, event)
     .catch((err) => console.log(err.message));
@@ -29,6 +31,10 @@ app.post("/events", (req, res) => {
     .catch((err) => console.log(err.message));
 
   res.send({ status: "OK" });
+});
+
+app.get("/events", (req, res) => {
+  res.send(events);
 });
 
 app.listen(4005, () => {
