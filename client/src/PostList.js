@@ -7,9 +7,13 @@ function PostList() {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const response = await axios.get(`${QUERY_ENDPOINT}/posts`);
-
-    setPosts(response.data);
+    try {
+      const res = await axios.get(`${QUERY_ENDPOINT}/posts`);
+      setPosts(res.data);
+    } catch (error) {
+      console.log(error);
+      setPosts([]);
+    }
   };
 
   useEffect(() => {
