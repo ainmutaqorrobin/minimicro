@@ -24,6 +24,9 @@ app.post("/events", (req, res) => {
   axios
     .post(ENDPOINT.QUERY_SERVICE, event)
     .catch((err) => console.log(err.message));
+  axios
+    .post(ENDPOINT.MODERATION_SERVICE, event)
+    .catch((err) => console.log(err.message));
 
   res.send({ status: "OK" });
 });

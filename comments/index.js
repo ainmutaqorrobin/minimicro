@@ -39,9 +39,24 @@ app.post("/posts/:id/comment", async (req, res) => {
   res.status(201).send(comments);
 });
 
-app.post("/events", (req, res) => {
+app.post("/events", async (req, res) => {
   console.log("Received Event", req.body.type);
 
+  const { type, data } = req.body;
+
+  if (type === "CommentModerated") {
+    const comments = commentsByPostId[data.postId];
+
+    const comment = comments.find((comment) => comment.id === data.id);
+    comment.status = data.status;
+    const event = {
+      type: "CommentUpdated",
+      data,
+    };
+    console.log(event);
+
+    await axios.post(EVENT_BUS, event);
+  }
   res.send({});
 });
 
