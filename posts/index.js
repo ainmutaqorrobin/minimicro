@@ -9,6 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const EVENT_BUS = "http://localhost:4005/events";
+const EVENT_BUS_DEPLOYMENT = "http://eventbus-svc:4005/events";
 const posts = {};
 
 app.get("/posts", (req, res) => {
@@ -22,7 +23,7 @@ app.post("/posts", async (req, res) => {
   posts[id] = { id, title };
 
   const event = { type: "PostCreated", data: posts[id] };
-  await axios.post(EVENT_BUS, event);
+  await axios.post(EVENT_BUS_DEPLOYMENT, event);
 
   res.status(201).send(posts[id]);
 });
