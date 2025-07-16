@@ -9,6 +9,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const EVENT_BUS = "http://localhost:4005/events";
+const EVENT_BUS_DEPLOYMENT = "http://eventbus-svc:4005/events";
+
 const commentsByPostId = {};
 
 app.get("/posts/:id/comments", (req, res) => {
@@ -34,7 +36,7 @@ app.post("/posts/:id/comment", async (req, res) => {
       status: "pending",
     },
   };
-  await axios.post(EVENT_BUS, event);
+  await axios.post(EVENT_BUS_DEPLOYMENT, event);
 
   res.status(201).send(comments);
 });
@@ -55,7 +57,7 @@ app.post("/events", async (req, res) => {
     };
     console.log(event);
 
-    await axios.post(EVENT_BUS, event);
+    await axios.post(EVENT_BUS_DEPLOYMENT, event);
   }
   res.send({});
 });

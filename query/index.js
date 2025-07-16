@@ -8,6 +8,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const EVENT_BUS = "http://localhost:4005/events";
+const EVENT_BUS_DEPLOYMENT = "http://eventbus-svc:4005/events";
+
 const posts = {};
 
 const handleEvent = (type, data) => {
@@ -48,7 +50,7 @@ app.post("/events", (req, res) => {
 app.listen(4002, async () => {
   console.log("Listening on port 4002");
   try {
-    const res = await axios.get(EVENT_BUS);
+    const res = await axios.get(EVENT_BUS_DEPLOYMENT);
 
     for (let event of res.data) {
       console.log("Processing event:", event.type);
