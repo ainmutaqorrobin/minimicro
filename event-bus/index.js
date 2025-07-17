@@ -10,7 +10,11 @@ const ENDPOINT = {
   COMMENT_SERVICE: "http://localhost:4001/events",
   QUERY_SERVICE: "http://localhost:4002/events",
   MODERATION_SERVICE: "http://localhost:4003/events",
+
   POST_SERVICE_DEPLOYMENT: "http://posts-clusterip-svc:4000/events",
+  COMMENT_SERVICE_DEPLOYMENT: "http://comments-svc:4001/events",
+  QUERY_SERVICE_DEPLOYMENT: "http://query-svc:4002/events",
+  MODERATION_SERVICE_DEPLOYMENT: "http://moderation-svc:4003/events",
 };
 
 const events = [];
@@ -21,15 +25,15 @@ app.post("/events", (req, res) => {
   axios
     .post(ENDPOINT.POST_SERVICE_DEPLOYMENT, event)
     .catch((err) => console.log(err.message));
-  // axios
-  //   .post(ENDPOINT.COMMENT_SERVICE, event)
-  //   .catch((err) => console.log(err.message));
-  // axios
-  //   .post(ENDPOINT.QUERY_SERVICE, event)
-  //   .catch((err) => console.log(err.message));
-  // axios
-  //   .post(ENDPOINT.MODERATION_SERVICE, event)
-  //   .catch((err) => console.log(err.message));
+  axios
+    .post(ENDPOINT.COMMENT_SERVICE_DEPLOYMENT, event)
+    .catch((err) => console.log(err.message));
+  axios
+    .post(ENDPOINT.QUERY_SERVICE_DEPLOYMENT, event)
+    .catch((err) => console.log(err.message));
+  axios
+    .post(ENDPOINT.MODERATION_SERVICE_DEPLOYMENT, event)
+    .catch((err) => console.log(err.message));
 
   res.send({ status: "OK" });
 });
