@@ -7,7 +7,10 @@ function PostCreate() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post(`${POST_ENDPOINT_DEPLOYMENT}/posts`, { title });
+    const response = await axios.post(
+      `${POST_ENDPOINT_DEPLOYMENT}/posts/create`,
+      { title }
+    );
     if (response) {
       setTitle("");
     }
