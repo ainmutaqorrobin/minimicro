@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { QUERY_ENDPOINT } from "./const";
+import { POST_ENDPOINT_DEPLOYMENT } from "./const";
 import PostCard from "./PostCard";
 
 function PostList() {
@@ -8,7 +8,7 @@ function PostList() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get(`${QUERY_ENDPOINT}/posts`);
+      const res = await axios.get(`${POST_ENDPOINT_DEPLOYMENT}/posts`);
       setPosts(res.data);
     } catch (error) {
       console.log(error);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { COMMENT_ENDPOINT } from "./const";
+import { POST_ENDPOINT_DEPLOYMENT } from "./const";
 
 function CommentCreate({ postId }) {
   const [content, setContent] = useState("");
@@ -9,7 +9,7 @@ function CommentCreate({ postId }) {
     e.preventDefault();
 
     const response = await axios.post(
-      `${COMMENT_ENDPOINT}/posts/${postId}/comment`,
+      `${POST_ENDPOINT_DEPLOYMENT}/posts/${postId}/comment`,
       { content }
     );
 
