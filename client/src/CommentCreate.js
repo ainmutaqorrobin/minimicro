@@ -9,7 +9,7 @@ function CommentCreate({ postId }) {
     e.preventDefault();
 
     const response = await axios.post(
-      `${POST_ENDPOINT_DEPLOYMENT}/posts/${postId}/comment`,
+      `${POST_ENDPOINT_DEPLOYMENT}/posts/${postId}/comments`,
       { content }
     );
 
